@@ -1,7 +1,14 @@
 /*global fetch*/
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
+
+// bring in the aws-sdkv3
 import { DynamoDBDocumentClient, PutCommand } from '@aws-sdk/lib-dynamodb'
+// bring in an adapter to help convert json to dynamodbJSON
+import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
+
+// construct the dynamodb client
 const client = new DynamoDBClient({})
+// add the adapter to the dynamodb client
+const ddbDocClient = DynamoDBDocumentClient.from(client)
 
 export async function main(event) {
 	// call the API
@@ -22,7 +29,6 @@ export async function main(event) {
 
 	//try to add to the DB, otherwise throw an error
 	try {
-		const ddbDocClient = DynamoDBDocumentClient.from(client)
 		await ddbDocClient.send(new PutCommand(params))
 		return {
 			body: 'success!',
