@@ -1,0 +1,9 @@
+{
+  "BackendStackWithJSFunction": {
+    "UserPoolClientId": "44mb28ne2rj71nfk0478fgfoo0",
+    "GraphQLAPIID": "fjiav6m7f5bihb7iek2ik2b6b4",
+    "UserPoolId": "us-east-1_ma3i1bEbA",
+    "GraphQLURL": "https://utfvj2p7lrhzjfl4tvcj6yj5ne.appsync-api.us-east-1.amazonaws.com/graphql",
+    "IdentityPoolId": "us-east-1:d3cf4879-b80a-4e6a-96fb-fc90756bba49"
+  }
+}

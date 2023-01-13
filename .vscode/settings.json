@@ -1,0 +1,7 @@
+{
+	"eslint.workingDirectories": [
+		{ "pattern": "backend/*/" },
+
+		{ "pattern": "frontend/*/" }
+	]
+}
