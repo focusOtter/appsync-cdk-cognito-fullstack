@@ -26,7 +26,7 @@ const fetchUsersQuery = `
     }
   }
 `
-export default function Home({ users = [], nextToken }) {
+function Home({ users = [], nextToken }) {
 	const [pageTokens, setPageTokens] = useState([nextToken])
 	const [currentPageIndex, setCurrentPageIndex] = useState(1)
 	const [hasMorePages, setHasMorePages] = useState(true)
@@ -38,6 +38,7 @@ export default function Home({ users = [], nextToken }) {
 				data: { listUsers },
 			} = await API.graphql({
 				query: fetchUsersQuery,
+				// authMode: 'AWS_IAM',
 				variables: {
 					limit: 5,
 					nextToken: pageTokens[currentPageIndex - 1],
@@ -55,23 +56,6 @@ export default function Home({ users = [], nextToken }) {
 		setCurrentPageIndex(currentPageIndex + 1)
 	}
 
-	// const handlePrevPage = async () => {
-	// 	const prevToken = pageTokens[currentPageNumber - 2]
-	// 	const isFirstPage = currentPageNumber - 2 === 0
-	// 	const {
-	// 		data: { listUsers },
-	// 	} = await API.graphql({
-	// 		query: fetchUsersQuery,
-	// 		variables: {
-	// 			limit: 5,
-	// 			nextToken: isFirstPage ? null : prevToken,
-	// 		},
-	// 	})
-	// 	const { items } = listUsers
-	// 	console.log(items)
-	// 	setProfileUsers(items)
-	// 	setCurrentPageIndex(currentPageNumber - 1)
-	// }
 	return (
 		<Flex direction={'column'}>
 			<Heading textAlign={'center'} level={2}>
@@ -101,10 +85,13 @@ export default function Home({ users = [], nextToken }) {
 	)
 }
 
+export default withAuthenticator(Home)
+
 export async function getStaticProps() {
 	const { data } = await API.graphql({
 		query: fetchUsersQuery,
 		variables: { limit: 5 },
+		// authMode: 'AWS_IAM',
 	})
 
 	return {
