@@ -5,7 +5,7 @@
 This repo walks through the steps needed to get a fullstack application setup with AWS AppSync as the API layer. This is detailed in the following blog post: https://aws.amazon.com/blogs/mobile/secure-aws-appsync-with-iam-permissions-using-the-aws-cdk/
 
 
-![architecture diagram](./readmeImages/archDiagram.png)
+![architecture diagram](./readmeImages/backend/archDiagram.png)
 
 # Content Channels
 
@@ -36,7 +36,7 @@ Amplify.configure({
 
 With our frontend cofigured to work with out backend, and our Lambda function seeding out database, the frontend will display user data styled with the AWS [Amplify UI Components](https://ui.docs.amplify.aws/)
 
-![user profile](./readmeImages/userProfile.png)
+![user profile](./readmeImages/backend/userProfile.png)
 
 > Note the frontend repo also has a dedicated branch to show the _slight_ change needed for IAM authorization.
 
@@ -69,7 +69,7 @@ Amplify.configure({
 })
 ```
 
-In addition to configuring our frontend, the Amplify libraries also provide several ways to [call our backend](https://github.com/focusOtter/appsync-apikey-pagination-frontend/blob/main/pages/index.js#L12-L28) depending on how much or little we want our frontend to make use of Amplify:
+In addition to configuring our frontend, the Amplify libraries also provide several ways to depending on how much or little we want our frontend to make use of Amplify:
 
 ```ts
 //alternatively, run the following commands in your terminal:
@@ -94,7 +94,7 @@ Note the `nextToken` field. This will return a token if there are more users ava
 
 For styling the [AWS Amplify UI library])(https://ui.docs.amplify.aws/) is used to create the following page when the application is run with `npm run dev`:
 
-![user profile](./readmeImages/userProfile.png)
+![user profile](./readmeImages/frontend/userProfile.png)
 
 ## Content Created
 
