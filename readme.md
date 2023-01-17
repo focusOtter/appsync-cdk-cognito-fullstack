@@ -1,21 +1,9 @@
-# Secure AWS AppSync with API Keys using the AWS CDK
+# Secure AWS AppSync with Amazon Cognito using the AWS CDK
 
 > (checkout the branches for the IAM permission setup)
 
-This repo walks through the steps needed to get setup an AppSync API that is protected with an API Key.
+This repo walks through the steps needed to get a fullstack application setup with AWS AppSync as the API layer. This is detailed in the following blog post: https://aws.amazon.com/blogs/mobile/secure-aws-appsync-with-iam-permissions-using-the-aws-cdk/
 
-```ts
-// valid, but simplified
-const api = new GraphqlApi(this, 'User API', {
-	name: 'User API',
-	schema: Schema.fromAsset(path.join(__dirname, 'schema.graphql')),
-	authorizationConfig: {
-		defaultAuthorization: {
-			authorizationType: AuthorizationType.API_KEY,
-		},
-	},
-})
-```
 
 ![architecture diagram](./readmeImages/archDiagram.png)
 
@@ -29,11 +17,11 @@ const api = new GraphqlApi(this, 'User API', {
 
 ## Project Overview
 
-The core of the appl
+The core of the app
 
 The deployed project is meant to work with a frontend (see link to frontend repo below), thereby creating a fullstack application. In addition to an AppSync API, a DynamoDB table is created to hold `User` data and a Lambda function is created to populate the table on a schedule.
 
-[On the frontend](https://github.com/focusOtter/appsync-apikey-pagination-frontend), use of the AWS Amplify JS libraries are used to connect our frontend to our backend by means of the `Amplify.configure` method (sample data configs are used):
+On the frontend, use of the AWS Amplify JS libraries are used to connect our frontend to our backend by means of the `Amplify.configure` method (sample data configs are used):
 
 ```js
 Amplify.configure({
