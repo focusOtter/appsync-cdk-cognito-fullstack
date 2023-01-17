@@ -5,7 +5,7 @@
 This repo walks through the steps needed to get a fullstack application setup with AWS AppSync as the API layer. This is detailed in the following blog post: https://aws.amazon.com/blogs/mobile/secure-aws-appsync-with-iam-permissions-using-the-aws-cdk/
 
 
-![architecture diagram](./readmeImages/backend/archDiagram.png)
+![architecture diagram](./backend/readmeImages/archDiagram.png)
 
 # Content Channels
 
@@ -36,7 +36,7 @@ Amplify.configure({
 
 With our frontend cofigured to work with out backend, and our Lambda function seeding out database, the frontend will display user data styled with the AWS [Amplify UI Components](https://ui.docs.amplify.aws/)
 
-![user profile](./readmeImages/backend/userProfile.png)
+![user profile](./backend/readmeImages/userProfile.png)
 
 > Note the frontend repo also has a dedicated branch to show the _slight_ change needed for IAM authorization.
 
@@ -52,8 +52,6 @@ With our frontend cofigured to work with out backend, and our Lambda function se
 --------FRONTEND-------------------
 
 # Fetch Data from a DynamoDB Database with AWS Amplify
-
-> This repo is part of a fullstack application. The backend can be found [here](https://github.com/focusOtter/cdk-appsync-guests).
 
 Using a NextJS app with the [AWS Amplify JavaScript libraries](https://docs.amplify.aws/lib/q/platform/js/), we can hook into AWS resources. This frontend demonstrates hooking into an AppSync API that is protected with the an API Key.
 
@@ -92,9 +90,7 @@ const fetchUsersQuery = `
 
 Note the `nextToken` field. This will return a token if there are more users available. This is how pagination is done in GraphQL.
 
-For styling the [AWS Amplify UI library])(https://ui.docs.amplify.aws/) is used to create the following page when the application is run with `npm run dev`:
-
-![user profile](./readmeImages/frontend/userProfile.png)
+For styling the [AWS Amplify UI library])(https://ui.docs.amplify.aws/) is used.
 
 ## Content Created
 
